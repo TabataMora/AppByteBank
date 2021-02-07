@@ -1,4 +1,5 @@
-import 'package:bytebank_flutter/screens/transfer/list.dart';
+//import 'package:bytebank_flutter/screens/transfer/list.dart';
+import 'package:bytebank_flutter/screens/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class ByteBankApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: TransfersList(),
+      home: Dashboard(),
     );
   }
 }
