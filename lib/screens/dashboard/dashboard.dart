@@ -1,6 +1,7 @@
-import 'package:bytebank_flutter/modelss/balance.dart';
-import 'package:bytebank_flutter/screens/dashboard/balance.dart';
+//import 'package:bytebank_flutter/modelss/balance-models.dart';
 import 'package:flutter/material.dart';
+
+import 'balance-dashboard.dart';
 
 class Dashboard extends StatelessWidget {
   @override
@@ -11,7 +12,7 @@ class Dashboard extends StatelessWidget {
       ),
       body: Align(
         alignment: Alignment.topCenter,
-        child: BalanceCard(Balance(10.00)),
+        child: BalanceCard(),
       ),
     );
   }
