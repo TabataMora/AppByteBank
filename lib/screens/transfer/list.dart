@@ -34,7 +34,7 @@ class TransfersListState extends State<TransfersList> {
         child: Icon(Icons.add),
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return FormTransfer();
+            return FormTransferState();
           })).then(
             (transferenciaRecebida) => _update(transferenciaRecebida),
           );
