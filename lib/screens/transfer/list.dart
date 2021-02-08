@@ -1,17 +1,12 @@
 import 'package:bytebank_flutter/modelss/transfer.dart';
+import 'package:bytebank_flutter/modelss/transfers-models.dart';
 import 'package:bytebank_flutter/screens/transfer/forms.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 const _titleAppBar = 'Transferências';
 
-class TransfersList extends StatefulWidget {
-  final List<Transfer> _listTransfers = List();
-
-  @override
-  TransfersListState createState() => TransfersListState();
-}
-
-class TransfersListState extends State<TransfersList> {
+class TransfersListState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,37 +15,32 @@ class TransfersListState extends State<TransfersList> {
           _titleAppBar,
         ),
       ),
-      body: ListView.builder(
-        itemCount: widget._listTransfers.length,
-        itemBuilder: (
-          context,
-          indice,
-        ) {
-          final transfers = widget._listTransfers[indice];
-          return TransfersItens(transfers);
-        },
-      ),
+      body: Consumer<Transfers>(builder: (context, transfers, child) {
+        return ListView.builder(
+          itemCount: transfers.transfers.length,
+          itemBuilder: (
+            context,
+            indice,
+          ) {
+            final transfer = transfers.transfers[indice];
+            return TransfersItens(transfer);
+          },
+        );
+      }),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return FormTransferState();
-          })).then(
-            (transferenciaRecebida) => _update(transferenciaRecebida),
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return FormTransferState();
+              },
+            ),
           );
         },
       ),
     );
-  }
-
-  void _update(Transfer createdTransfer) {
-    if (createdTransfer != null) {
-      setState(() {
-        widget._listTransfers.add(
-          createdTransfer,
-        );
-      });
-    }
   }
 }
 
@@ -67,10 +57,10 @@ class TransfersItens extends StatelessWidget {
           Icons.monetization_on,
         ),
         title: Text(
-          _transfer.account.toString(),
+          _transfer.toStringAccount(),
         ),
         subtitle: Text(
-          _transfer.value.toString(),
+          _transfer.toStringValue(),
         ),
       ),
     );

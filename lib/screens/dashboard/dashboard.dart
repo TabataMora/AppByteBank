@@ -1,10 +1,7 @@
-//import 'package:bytebank_flutter/modelss/balance-models.dart';
-//import 'package:bytebank_flutter/modelss/balance-models.dart';
 import 'package:bytebank_flutter/screens/deposit/form-deposit.dart';
 import 'package:bytebank_flutter/screens/transfer/forms.dart';
-//import 'package:bytebank_flutter/screens/transfer/forms.dart';
+import 'package:bytebank_flutter/screens/transfer/last.dart';
 import 'package:flutter/material.dart';
-//import 'package:provider/provider.dart';
 
 import 'balance-dashboard.dart';
 
@@ -47,7 +44,8 @@ class Dashboard extends StatelessWidget {
                 },
               )
             ],
-          )
+          ),
+          LastTransfers(),
         ],
       ),
     );

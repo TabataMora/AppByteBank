@@ -6,4 +6,12 @@ class Transfer {
     this.account,
     this.value,
   );
+
+  String toStringValue() {
+    return 'R\$ $value';
+  }
+
+  String toStringAccount() {
+    return 'Conta $account';
+  }
 }
